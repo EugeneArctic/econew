@@ -66,12 +66,13 @@ fun menuLayout(): HorizontalLayout
 
     loginItem.addClickListener {
         checkPassword { UI.getCurrent().navigate(Routes.PersonalAccount.route) }
+
     }
     return HorizontalLayout(img,header,buttonHome, newsHome, loginItem).apply {  style["margin-top"] ="4em"
         style["margin-bottom"] ="2em"}
 }
 
-private fun checkPassword(funOnClick:()->Unit) {
+private fun checkPassword(funOnClick:()->Unit):String {
     val enter = Button("Enter")
     val login = TextField("Login")
     val pass = TextField("Password")
@@ -86,6 +87,7 @@ private fun checkPassword(funOnClick:()->Unit) {
             Notification.show("Invalid password", 700, Notification.Position.MIDDLE)
         }
     }
+    return login.value
 }
 
 private fun ecoDialog(t: String, p: String, login: TextField, pass: TextField, buttonOk: Button): VerticalLayout {

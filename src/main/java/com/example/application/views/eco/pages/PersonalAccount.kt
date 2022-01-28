@@ -22,23 +22,33 @@ import com.vaadin.flow.router.Route
 
 @Route (value = "acc")
 
-class PersonalAccount:VerticalLayout()
+class PersonalAccount():VerticalLayout()
 {
     init {
         add(menuLayout())
         defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
-        add(mainVerticalLayout().apply {
         val header = H1("Welcome to your personal account")
-        val p = Paragraph("Here you can meet people, who wants to care about nature too.\n" +
-                "Also we add people which are near you\n"+"See you on the future meeting in our community")
-
-        val grid = Grid(Person::class.java).apply {   addThemeVariants(GridVariant.LUMO_NO_BORDER) }
-        grid.dataProvider = ListDataProvider(mutablePersonList)
-
-        add(header,p,grid)
+        add(header)
 
 
+        add(mainVerticalLayout().apply {
+        add(HorizontalLayout().apply {
+            add(VerticalLayout().apply {
+               add(Image().apply { src = "https://images.unsplash.com/photo-1599202889720-cd3c0833efa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" })
+                add(Paragraph("See you on the future meeting in our community on 28th January 2022!"))
+            })
+
+
+            add(VerticalLayout().apply {
+             val p = Paragraph("Here you can meet people, who wants to care about nature too.\n" +
+            "Also we add people which are near you:\n")
+            val grid = Grid(Person::class.java).apply {   addThemeVariants(GridVariant.LUMO_NO_BORDER) }
+            grid.dataProvider = ListDataProvider(mutablePersonList)
+                grid.setColumns("name","adress","phone")
+            add(p,grid)
+            })
          })
+        })
 
     }
 
