@@ -23,10 +23,10 @@ enum class TopicEnum(
         "Useful tips",
     ),
 
-    ThirdTopic("Instructions",
+    ThirdTopic("Video instruction",
         "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
         "Instruction",
-        "Instruction"),
+        "See it!"),
 
     FourthTopic ( "Digiwaste Tamagotchi",
         "https://images.unsplash.com/photo-1627856013091-fed6e4e30025?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",

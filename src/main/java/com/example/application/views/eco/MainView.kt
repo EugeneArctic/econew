@@ -38,12 +38,12 @@ class MainView:VerticalLayout()  {
 
         defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
 
-        val mainVerticalLayout = VerticalLayout().apply {
-            defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
-        maxWidth = "70%"
-        style["border-radius"] ="16px"
-        style["box-shadow"] ="3px 42px 22px 35px rgba(127, 180, 145, 0.27)"
-        style["background-color"]= "transparent"
+//        val mainVerticalLayout = VerticalLayout().apply {
+//            defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
+//        maxWidth = "70%"
+//        style["border-radius"] ="16px"
+//        style["box-shadow"] ="3px 42px 22px 35px rgba(127, 180, 145, 0.27)"
+//        style["background-color"]= "transparent"
 
         val firstCard = EcoCard(
             TopicEnum.FirstTopic.title,
@@ -78,7 +78,7 @@ class MainView:VerticalLayout()  {
         val firstLineCard = HorizontalLayout().apply {
             maxWidth = "50%"
         }
-        val firstRowCard = VerticalLayout().apply {
+        val firstRowCard = mainVerticalLayout().apply {
             maxWidth = "50%"
             add(firstCard)
             addClickListener {
@@ -86,7 +86,8 @@ class MainView:VerticalLayout()  {
             }
         }
 
-        val secondRowCard = VerticalLayout().apply {
+        val secondRowCard = mainVerticalLayout().apply {
+            style["box-shadow"] =" 56px 23px 89px -2px rgba(127, 180, 145, 0.27)"
             maxWidth = "50%"
             add(secondCard)
             addClickListener {
@@ -98,7 +99,7 @@ class MainView:VerticalLayout()  {
             maxWidth = "50%"
         }
 
-        val thirdRowCard = VerticalLayout().apply {
+        val thirdRowCard = mainVerticalLayout().apply {
             maxWidth = "50%"
             add(thirdCard)
             addClickListener {
@@ -106,7 +107,8 @@ class MainView:VerticalLayout()  {
             }
         }
 
-        val fourthRowCard = VerticalLayout().apply {
+        val fourthRowCard = mainVerticalLayout().apply {
+            style["box-shadow"] =" 56px 23px 89px -2px rgba(127, 180, 145, 0.27)"
             maxWidth = "50%"
             add(fourthCard)
             addClickListener {
@@ -116,11 +118,13 @@ class MainView:VerticalLayout()  {
         firstLineCard.addAndExpand(firstRowCard,secondRowCard)
         secondLineCard.addAndExpand(thirdRowCard,fourthRowCard)
             add(firstLineCard,secondLineCard)
+
+        add(menuLayout,firstLineCard,secondLineCard)
         }
 
-        add(menuLayout,mainVerticalLayout)
 
-    }
+
+//    }
 
 
 }
