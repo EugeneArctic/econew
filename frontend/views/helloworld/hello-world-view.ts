@@ -23,7 +23,7 @@ export class HelloWorldView extends LitElement {
             <h2 class="mb-0 mt-xl text-3xl">DIGIWASTE</h2>
             <p class="mb-xl mt-0 text-secondary">Royalty free photos and pictures, courtesy of Unsplash</p>
           </vaadin-vertical-layout>
-          <vaadin-select label="Sort by" id="sortBy"></vaadin-select>
+<!--          <vaadin-select label="Sort by" id="sortBy"></vaadin-select>-->
         </vaadin-horizontal-layout>
         <ol class="gap-m grid list-none m-0 p-0">
           <slot></slot>
