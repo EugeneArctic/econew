@@ -1,34 +1,23 @@
 package com.example.application.views.eco
 
+import com.example.application.views.MainLayout
 import com.example.application.views.eco.service.*
-import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.UI
-import com.vaadin.flow.component.button.Button
-import com.vaadin.flow.component.button.ButtonVariant
-import com.vaadin.flow.component.dialog.Dialog
-import com.vaadin.flow.component.html.H2
-import com.vaadin.flow.component.html.Header
-import com.vaadin.flow.component.html.Image
-import com.vaadin.flow.component.html.Paragraph
-import com.vaadin.flow.component.icon.Icon
-import com.vaadin.flow.component.icon.VaadinIcon
-import com.vaadin.flow.component.menubar.MenuBar
-import com.vaadin.flow.component.menubar.MenuBarVariant
-import com.vaadin.flow.component.notification.Notification
+import com.vaadin.flow.component.gridpro.EditorType
 import com.vaadin.flow.component.orderedlayout.FlexComponent
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout
 import com.vaadin.flow.component.orderedlayout.VerticalLayout
-import com.vaadin.flow.component.page.Viewport
-import com.vaadin.flow.component.textfield.TextField
 import com.vaadin.flow.router.PageTitle
 import com.vaadin.flow.router.Route
-import com.vaadin.flow.router.RouteAlias
+import com.wontlost.ckeditor.Constants
+import com.wontlost.ckeditor.VaadinCKEditor
+import com.wontlost.ckeditor.VaadinCKEditorBuilder
 
 
 @PageTitle("Eco")
-@Route(value = "eco")
-@RouteAlias(value = "")
-@Viewport(value = "1024")
+@Route(value = "oldview", layout = MainLayout::class)
+//@RouteAlias(value = "")
+
 //@Tag("hello-world-view")
 //@JsModule("./views/helloworld/hello-world-view.ts")
 class MainView:VerticalLayout()  {
@@ -36,7 +25,10 @@ class MainView:VerticalLayout()  {
     //LitTemplate(), HasComponents, HasStyle
     init {
 
-        val menuLayout = menuLayout()
+        style["background-image"] ="https://images.unsplash.com/photo-1555465910-31f7f20a184d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3690&q=80"
+        //val menuLayout = menuLayout()
+
+        style.set("background-image", "url(https://images.unsplash.com/photo-1555465910-31f7f20a184d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3690&q=80)")
 
         defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
 
@@ -46,6 +38,9 @@ class MainView:VerticalLayout()  {
 //        style["border-radius"] ="16px"
 //        style["box-shadow"] ="3px 42px 22px 35px rgba(127, 180, 145, 0.27)"
 //        style["background-color"]= "transparent"
+
+
+
 
         val firstCard = EcoCard(
             TopicEnum.FirstTopic.title,
@@ -121,7 +116,8 @@ class MainView:VerticalLayout()  {
         secondLineCard.addAndExpand(thirdRowCard,fourthRowCard)
             add(firstLineCard,secondLineCard)
 
-        add(menuLayout,firstLineCard,secondLineCard)
+
+        add(firstLineCard,secondLineCard)
         }
 
 

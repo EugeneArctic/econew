@@ -1,5 +1,6 @@
 package com.example.application.views.eco.pages
 
+import com.example.application.views.MainLayout
 import com.example.application.views.eco.MainView
 import com.example.application.views.eco.mutablePersonList
 import com.example.application.views.eco.service.*
@@ -21,13 +22,27 @@ import com.vaadin.flow.data.provider.DataProvider
 import com.vaadin.flow.data.provider.ListDataProvider
 import com.vaadin.flow.router.Route
 
-@Route (value = "acc")
-@Viewport(value = "1024")
+@Route (value = "acc",layout = MainLayout::class)
 
 class PersonalAccount():VerticalLayout()
 {
     init {
-        add(menuLayout())
+
+        val enter = Button("Enter")
+        val login = TextField("Login")
+        val pass = TextField("Password")
+
+        val dialog = DialogFromLayout(ecoDialog("DIGIWASTE", p = "Personal account", login, pass, enter))
+        dialog.open()
+        enter.addClickListener {
+            if (login.value in LoginEnum.values().map { it.login } && pass.value in LoginEnum.values()
+                    .map { it.pass }) {
+                dialog.close()
+            } else {
+                Notification.show("Invalid password", 700, Notification.Position.MIDDLE)
+            }
+        }
+
         defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
         val header = H1("Welcome to your personal account")
         add(header)
@@ -53,6 +68,10 @@ class PersonalAccount():VerticalLayout()
         })
 
     }
+    private fun ecoDialog(t: String, p: String, login: TextField, pass: TextField, buttonOk: Button): VerticalLayout {
+        return VerticalLayout(H2(t), Paragraph(p), login, pass, HorizontalLayout().apply {
+            addAndExpand(buttonOk)
+        })}
 
 }
 

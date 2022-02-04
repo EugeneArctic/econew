@@ -1,5 +1,7 @@
 package com.example.application.views.eco.pages
 
+import com.example.application.views.MainLayout
+import com.example.application.views.eco.service.mainStyle
 import com.example.application.views.eco.service.mainVerticalLayout
 import com.example.application.views.eco.service.menuLayout
 import com.vaadin.flow.component.accordion.Accordion
@@ -10,11 +12,11 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent
 import com.vaadin.flow.component.orderedlayout.VerticalLayout
 import com.vaadin.flow.router.Route
 
-@Route(value = "fourth")
+@Route(value = "fourth", layout = MainLayout::class)
 class FourTopic:VerticalLayout() {
 init {
 
-    add(menuLayout())
+    this.mainStyle()
     defaultHorizontalComponentAlignment = FlexComponent.Alignment.CENTER
 
 
